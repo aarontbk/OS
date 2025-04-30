@@ -9,9 +9,10 @@ all:
 	# i686-elf-ld -g -relocatable $(FILES) -o ./build/completeKernel.o
 	# i686-elf-gcc $(FLAGS) -T ./src/linkerScript.ld -o ./bin/kernel.bin -ffreestanding -O0 -nostdlib ./build/completeKernel.o
 
-	dd if=./bin/boot.bin >> ./bin/os.bin
-	dd if=./bin/kernel.bin >> ./bin/os.bin
-	dd if=/dev/zero bs=512 count=8 >> ./bin/os.bin
+	dd if=./bin/boot.bin >> ./bin/os.img
+	dd if=./bin/kernel.bin >> ./bin/os.img
+	dd if=/dev/zero bs=512 count=8 >> ./bin/os.img
+	
 
 clean:
 	rm -f ./bin/boot.bin
